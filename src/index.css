@@ -1,0 +1,142 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Catppuccin Mocha Design System - Dark theme portfolio
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Catppuccin Mocha Base Colors */
+    --background: 240 21% 15%;     /* Base - Dark background */
+    --foreground: 226 64% 88%;     /* Text - Light text */
+
+    --card: 240 20% 17%;           /* Surface0 - Card backgrounds */
+    --card-foreground: 226 64% 88%;
+
+    --popover: 240 20% 17%;
+    --popover-foreground: 226 64% 88%;
+
+    /* Primary - Catppuccin Lavender */
+    --primary: 267 84% 81%;
+    --primary-foreground: 240 21% 15%;
+
+    /* Secondary - Catppuccin Surface1 */
+    --secondary: 240 16% 20%;
+    --secondary-foreground: 226 64% 88%;
+
+    /* Muted areas */
+    --muted: 240 13% 23%;          /* Surface2 */
+    --muted-foreground: 228 39% 69%; /* Overlay1 */
+
+    /* Accent - Catppuccin Mauve */
+    --accent: 316 73% 69%;
+    --accent-foreground: 240 21% 15%;
+
+    /* Destructive - Catppuccin Red */
+    --destructive: 343 81% 75%;
+    --destructive-foreground: 240 21% 15%;
+
+    /* Borders and inputs */
+    --border: 240 13% 23%;         /* Surface2 */
+    --input: 240 13% 23%;
+    --ring: 267 84% 81%;           /* Lavender */
+
+    --radius: 0.75rem;
+
+    /* Custom portfolio colors */
+    --hero-glow: 267 84% 81%;      /* Lavender glow */
+    --code-bg: 240 16% 20%;        /* Surface1 for code blocks */
+    --cat-accent: 25 83% 53%;      /* Catppuccin Peach for cat theme */
+    
+    /* Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(240 21% 15%), hsl(240 16% 20%));
+    --gradient-card: linear-gradient(135deg, hsl(240 20% 17%), hsl(240 16% 20%));
+    --gradient-accent: linear-gradient(135deg, hsl(267 84% 81%), hsl(316 73% 69%));
+    
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    /* Sidebar (keeping for compatibility) */
+    --sidebar-background: 240 20% 17%;
+    --sidebar-foreground: 226 64% 88%;
+    --sidebar-primary: 267 84% 81%;
+    --sidebar-primary-foreground: 240 21% 15%;
+    --sidebar-accent: 240 13% 23%;
+    --sidebar-accent-foreground: 226 64% 88%;
+    --sidebar-border: 240 13% 23%;
+    --sidebar-ring: 267 84% 81%;
+  }
+
+  /* Dark mode is default, keeping this for shadcn compatibility */
+  .dark {
+    /* Same as root - we're dark-first */
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'JetBrains Mono', 'Monaco', 'Menlo', monospace;
+    font-weight: 400;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--background));
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--primary));
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--accent));
+  }
+}
+
+@layer components {
+  /* Custom utility classes for the portfolio */
+  .hero-glow {
+    box-shadow: 0 0 50px hsl(var(--hero-glow) / 0.3);
+  }
+
+  .card-hover {
+    transition: var(--transition-smooth);
+  }
+
+  .card-hover:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px hsl(var(--primary) / 0.1);
+  }
+
+  .gradient-text {
+    background: var(--gradient-accent);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .code-block {
+    background: hsl(var(--code-bg));
+    border: 1px solid hsl(var(--border));
+    border-radius: var(--radius);
+  }
+}
